@@ -1,7 +1,7 @@
 <?php
 
 function ConnectDB() {
-	$link = mysql_connect('localhost', 'wordsearch', 'Gt7goJgVWzLXZrh');
+	$link = mysql_connect('localhost', 'wordsearch', 'password');
 	return $link;
 }
 
