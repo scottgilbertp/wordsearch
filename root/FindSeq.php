@@ -11,7 +11,7 @@ function FindSeq($row, $col, $word, $dir) {
 	
 	$skiplist = file("./words_to_skip_in_FindAllSeqs.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
-	#ConnectDB();
+	$dblink = ConnectDB();
 	$new_locs = NewLocInDir($row, $col, $dir, strlen(str_replace(' ', '', $word)) );
 	$new_row = $new_locs[0]; 
 	$new_col = $new_locs[1]; 
@@ -33,7 +33,7 @@ function FindSeq($row, $col, $word, $dir) {
 		}
                                 
          }
-	#CloseDB();
+	CloseDB($dblink);
 
 }
 
