@@ -17,7 +17,7 @@ function PrintWordSearch($wordsearch, $highlitecells) {
 	#print "max_row = " . $max_row . "\n";
 	#print "max_col = " . $max_col . "\n";
 
-	print '<table cellpadding="0" cellspacing="0" style="font-size:60%;font-family:courier">' . "\n";
+	print '<table cellpadding="0" cellspacing="0" style="font-size:60%;font-family:courier;background-color:red;color:white">' . "\n";
 
 	for ($row = 0; $row <= $max_row; $row++) {
 		print "<tr>";
@@ -25,7 +25,7 @@ function PrintWordSearch($wordsearch, $highlitecells) {
 
 			# if current location is in list to be highlighted, then highlight it!
 			if ( in_array( array($row,$col), $highlitecells) ) {
-				print '<td style="background-color:orange;font-weight:bold">';
+				print '<td style="background-color:black;font-weight:bold">';
 			} else {
 				print '<td>';
 			}
