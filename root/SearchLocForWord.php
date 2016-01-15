@@ -14,12 +14,12 @@ function SearchLocForWord($word, $loc_row, $loc_col, $wordsearch) {
 			If (CheckForWord($word, $loc_row, $loc_col, $dir, $wordsearch)) {
 				echo "FOUND!: " . $word . " at " . $loc_row . "," . $loc_col . " in direction " . $dir . "\n";
 				# write entry to found words table
-				ConnectDB();
-				$result=QueryDB('INSERT INTO found_words SET word = "' . $word . 
+				$dblink = ConnectDB();
+				$result=QueryDB($dblink,'INSERT INTO found_words SET word = "' . $word . 
 					'", start_loc_row = ' . $loc_row . 
 					', start_loc_col = ' . $loc_col . 
 					', direction = "' . $dir . '";');
-				CloseDB();
+				CloseDB($dblink);
 
 				++$num_found;
 			}

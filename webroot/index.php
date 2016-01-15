@@ -30,9 +30,9 @@ if ($word <> '') {
 	# Strip out all whitespace and anything outside of the A-Z range
 	$word = preg_replace("(\W|[^A-Z])", '', $word);
 
-	ConnectDB();
-	$result=QueryDB('SELECT * FROM known_words WHERE word = "'. $word . '" LIMIT 1;');
-	if ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+	$dblink = ConnectDB();
+	$result=QueryDB($dblink,'SELECT * FROM known_words WHERE word = "'. $word . '" LIMIT 1;');
+	if ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 		$number_found = $line['number_found'];
 
 		# if word is a single character, divide count by 8 since no one cares about all 8 different directions
@@ -49,8 +49,8 @@ if ($word <> '') {
 			unset($locs[0]);
 			unset($locs[1]);
 
-			$result_locs=QueryDB('SELECT * FROM found_words WHERE word = "'. $word . '";');
-			while ($line_locs = mysql_fetch_array($result_locs, MYSQL_ASSOC)) {
+			$result_locs=QueryDB($dblink,'SELECT * FROM found_words WHERE word = "'. $word . '";');
+			while ($line_locs = mysqli_fetch_array($result_locs, MYSQL_ASSOC)) {
 				$row = $line_locs['start_loc_row'];
 				$col = $line_locs['start_loc_col'];
 				$dir = $line_locs['direction'];
@@ -79,9 +79,9 @@ if ($word <> '') {
 		print "Thats a new one! I haven't searched for <b>$word</b> yet - I've added it to list to search.<br><br>\n";
 		print "Check back in a minute or two - I should have results by then!<br>\n";
 		#QueryDB('INSERT INTO search_queue set word ="' . $word . '" ON DUPLICATE KEY UPDATE;');
-		QueryDB('INSERT INTO search_queue set word ="' . $word . '";');
+		QueryDB($dblink,'INSERT INTO search_queue set word ="' . $word . '";');
 	}
-	CloseDB();
+	CloseDB($dblink);
 
 }
 

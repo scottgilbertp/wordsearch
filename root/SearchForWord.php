@@ -22,10 +22,10 @@ function SearchForWord($word, $wordsearch) {
   	}
 
 	# write entry to known_words table
-	ConnectDB();
-	$result=QueryDB('DELETE FROM known_words WHERE word = "' . $word . '";');
-	$result=QueryDB('INSERT INTO known_words SET word = "' . $word . '", number_found = ' . $num_found . ';');
-	CloseDB();
+	$dblink = ConnectDB();
+	$result=QueryDB($dblink,'DELETE FROM known_words WHERE word = "' . $word . '";');
+	$result=QueryDB($dblink,'INSERT INTO known_words SET word = "' . $word . '", number_found = ' . $num_found . ';');
+	CloseDB($dblink);
 
 	return $num_found;
 }

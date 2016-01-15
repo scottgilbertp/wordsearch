@@ -18,8 +18,8 @@ function FindSeq($row, $col, $word, $dir) {
 	#print $new_row . "  " . $new_col . "\n";
 	$query = "SELECT * FROM found_words WHERE start_loc_row = $new_row AND start_loc_col = $new_col AND direction = \"$dir\" ;";
 	#print $query . "\n";
-        $result=QueryDB($query);
-        while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+        $result=QueryDB($dblink,$query);
+        while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 		$found_row = $line['start_loc_row'];
                 $found_col = $line['start_loc_col'];
                 $found_dir = $dir;
