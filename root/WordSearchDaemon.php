@@ -14,7 +14,7 @@ $dblink = ConnectDB();
 
 function QueueCount($dblink) {
 	$queue_count_result=QueryDB($dblink,'SELECT count(*) AS count FROM search_queue;');
-	$queue_count_line =  mysqli_fetch_array($queue_count_result, MYSQL_ASSOC);
+	$queue_count_line =  mysqli_fetch_array($queue_count_result, MYSQLI_ASSOC);
 	return $queue_count_line['count'];
 }
 
@@ -25,7 +25,7 @@ while ( time() - $start_time < $max_run_time ) {
 
 		if ( $result=QueryDB($dblink,'SELECT word FROM search_queue ORDER BY date_submitted LIMIT 1 FOR UPDATE;') ) {
 	
-			$line = mysqli_fetch_array($result, MYSQL_ASSOC);
+			$line = mysqli_fetch_array($result, MYSQLI_ASSOC);
 			$word = $line['word'];
 			print 'Searching for: ' . $word . "\n";
 	

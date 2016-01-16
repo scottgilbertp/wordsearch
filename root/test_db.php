@@ -6,7 +6,7 @@ $dblink = ConnectDB();
 
 $result=QueryDB($dblink,'select * from known_words limit 5');
 
-while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     #echo "\t<tr>\n";
     #foreach ($line as $col_value) {
     #    echo "\t\t<td>$col_value</td>\n";
@@ -19,7 +19,7 @@ while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 #
 #$result=QueryDB('select * from known_words');
 #
-#while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+#while ($line = mysql_fetch_array($result, MYSQLI_ASSOC)) {
 #    #echo "\t<tr>\n";
 #    #foreach ($line as $col_value) {
 #    #    echo "\t\t<td>$col_value</td>\n";
@@ -32,7 +32,7 @@ while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 #
 #$result=QueryDB('select * from known_words');
 #
-#while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+#while ($line = mysql_fetch_array($result, MYSQLI_ASSOC)) {
 #    #echo "\t<tr>\n";
 #    #foreach ($line as $col_value) {
 #    #    echo "\t\t<td>$col_value</td>\n";

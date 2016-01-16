@@ -9,7 +9,7 @@ $dblink = ConnectDB();
 
 $query = "SELECT * FROM found_words;";
 $result=QueryDB($dblink,$query);
-while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	if ( ! in_array( $line['word'], $skiplist) ) {
 		FindSeq($line['start_loc_row'], $line['start_loc_col'], $line['word'], $line['direction']);
 	}
