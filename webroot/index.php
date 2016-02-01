@@ -22,9 +22,8 @@ require_once("./db.php");
 require_once("./LocsUsedByWord.php");
 require_once("./PrintWordSearch.php");
 
-$word = $_GET["word"];
-
-if ($word <> '') {
+if ( isset($_GET["word"]) ) {
+	$word = $_GET["word"];
 	# Convert to all uppercase
 	$word = strtoupper($word);
 	# Strip out all whitespace and anything outside of the A-Z range
