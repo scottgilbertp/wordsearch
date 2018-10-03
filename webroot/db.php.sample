@@ -1,17 +1,16 @@
 <?php
 
 function ConnectDB() {
-	$link = mysql_connect('localhost', 'wordsearch', 'password');
+	$link = mysqli_connect('localhost', 'user-name', 'user-password','schema');
 	return $link;
 }
 
-function QueryDB($query) {
-	mysql_select_db('wordsearch');
-	return mysql_query($query);
+function QueryDB($link,$query) {
+	return mysqli_query($link,$query);
 }
 
-function CloseDB() {
-	mysql_close();
+function CloseDB($link) {
+	mysqli_close($link);
 }
 
 ?>
